@@ -1,0 +1,11 @@
+Package: cloudflared
+Version: 2021.2.5
+License: Cloudflare Service Agreement
+Vendor: Cloudflare
+Architecture: mips
+Maintainer: <Cloudflare support@cloudflare.com>
+Installed-Size: 25423
+Section: default
+Priority: extra
+Homepage: https://github.com/cloudflare/cloudflared
+Description: Cloudflare Argo tunnel daemon
