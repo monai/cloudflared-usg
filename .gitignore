@@ -1,0 +1,4 @@
+cloudflared-*
+work_dir
+
+*.deb
