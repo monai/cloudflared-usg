@@ -18,7 +18,7 @@ $(source_dir)/$(name): $(source_dir)
 
 $(package): $(source_dir)/$(name)
 	mkdir -p $(work_dir)/DEBIAN
-	cp debian/control $(work_dir)/DEBIAN
+	cat debian/control | sed -e 's/\$${VERSION}/$(version)/' > $(work_dir)/DEBIAN/control
 
 	mkdir -p $(work_dir)/etc/init.d
 	cp init.sh $(work_dir)/etc/init.d/$(name)
