@@ -1,17 +1,17 @@
-arch=$(shell uname -m)
-version=2021.2.5
-name=cloudflared
-source_dir=$(name)-$(version)
-package=$(name)_$(version)_$(arch).deb
-work_dir=work_dir
-date=$(shell date -u '+%Y-%m-%d-%H%M UTC')
+arch = $(shell uname -m)
+version = 2021.2.5
+name = cloudflared
+source_dir = $(name)-$(version)
+package = $(name)_$(version)_$(arch).deb
+work_dir = work_dir
+date = $(shell date -u '+%Y-%m-%d-%H%M UTC')
 
 ifeq ($(arch), x86_64)
-  goarch=amd64
+  goarch = amd64
 else ifeq ($(arch), i686)
-  goarch=amd64
+  goarch = amd64
 else
-  goarch=$(arch)
+  goarch = $(arch)
 endif
 
 $(source_dir):
