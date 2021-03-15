@@ -1,9 +1,18 @@
+arch=$(shell uname -m)
 version=2021.2.5
 name=cloudflared
 source_dir=$(name)-$(version)
-package=$(name)_$(version)_mips.deb
+package=$(name)_$(version)_$(arch).deb
 work_dir=work_dir
 date=$(shell date -u '+%Y-%m-%d-%H%M UTC')
+
+ifeq ($(arch), x86_64)
+  goarch=amd64
+else ifeq ($(arch), i686)
+  goarch=amd64
+else
+  goarch=$(arch)
+endif
 
 $(source_dir):
 	wget https://github.com/cloudflare/cloudflared/archive/$(version).zip
@@ -14,11 +23,11 @@ $(source_dir)/$(name): $(source_dir)
 	cd $(source_dir) && \
 		PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$(PATH)" \
 		GOOS=linux \
-		$(MAKE) cloudflared GOARCH=mips VERSION=$(version)
+		$(MAKE) cloudflared GOARCH=$(goarch) VERSION=$(version)
 
 $(package): $(source_dir)/$(name)
 	mkdir -p $(work_dir)/DEBIAN
-	cat debian/control | sed -e 's/\$${VERSION}/$(version)/' > $(work_dir)/DEBIAN/control
+	cat debian/control | sed -e 's/\$${VERSION}/$(version)/; s/\$${ARCH}/$(arch)/' > $(work_dir)/DEBIAN/control
 
 	mkdir -p $(work_dir)/etc/init.d
 	cp init.sh $(work_dir)/etc/init.d/$(name)
