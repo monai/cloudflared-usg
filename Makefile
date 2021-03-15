@@ -36,6 +36,9 @@ $(package): $(source_dir)/$(name)
 	mkdir -p $(work_dir)/etc/$(name)
 	cp config.yml $(work_dir)/etc/$(name)
 
+	mkdir -p $(work_dir)/usr/share/doc/$(name)
+	cp config.gateway.json $(work_dir)/usr/share/doc/$(name)
+
 	mkdir -p $(work_dir)/usr/sbin
 	cp $(source_dir)/$(name) $(work_dir)/usr/sbin
 

@@ -1,0 +1,39 @@
+{
+  "service": {
+    "dns": {
+      "forwarding": {
+        "options": [
+          "no-resolv",
+          "stop-dns-rebind",
+          "domain-needed",
+          "bogus-priv",
+          "filterwin2k",
+          "dnssec",
+          "trust-anchor=.,19036,8,2,49AAC11D7B6F6446702E54A1607371607A1A41855200FD2CE1CDDE32F24E8FB5",
+          "trust-anchor=.,20326,8,2,E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D",
+          "dnssec-check-unsigned",
+          "dnssec-timestamp=/config/dnsmasq-dnssec.timestamp",
+          "server=127.0.0.1#8853"
+        ]
+      }
+    },
+    "nat": {
+      "rule": {
+        "1": {
+          "description": "DNS Redirect Untagged",
+          "destination": {
+            "address": "!192.168.1.1",
+            "port": "53"
+          },
+          "inbound-interface": "eth0",
+          "inside-address": {
+            "address": "192.168.1.1"
+          },
+          "log": "disable",
+          "protocol": "tcp_udp",
+          "type": "destination"
+        }
+      }
+    }
+  }
+}
