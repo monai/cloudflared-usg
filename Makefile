@@ -48,6 +48,7 @@ $(package): $(source_dir)/$(name)
 	dpkg-deb --root-owner-group --build -Zgzip $(work_dir) $(package)
 
 clean-source:
+	rm -rf $(source_dir)/$(name)
 	rm -rf $(source_dir)/*.deb
 
 clean-work:
