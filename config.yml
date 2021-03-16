@@ -1,3 +1,4 @@
+no-autoupdate: true
 proxy-dns: true
 proxy-dns-port: 8853
 proxy-dns-upstream:

@@ -13,7 +13,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Argo Tunnel agent"
 NAME=$(basename $(readlink -f $0))
 DAEMON=/usr/sbin/$NAME
-DAEMON_ARGS="--config /etc/cloudflared/config.yml --pidfile /var/run/$NAME.pid --autoupdate-freq 24h0m0s"
+DAEMON_ARGS="--config /etc/cloudflared/config.yml --pidfile /var/run/$NAME.pid"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
