@@ -2,7 +2,7 @@ Package: cloudflared
 Version: ${VERSION}
 License: Cloudflare Service Agreement
 Vendor: Cloudflare
-Architecture: mips
+Architecture: ${ARCH}
 Maintainer: <Cloudflare support@cloudflare.com>
 Section: default
 Homepage: https://github.com/cloudflare/cloudflared
